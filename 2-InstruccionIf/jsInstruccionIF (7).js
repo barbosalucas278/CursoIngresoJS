@@ -6,7 +6,7 @@ let estado;
 edad = parseInt(document.getElementById("edad").value)
 estado = document.getElementById("estadoCivil").value
 
-if ((edad<18) && (estado="Soltero")) {
+if ((edad<18) && (estado!="Soltero")) {
     alert("Es muy pequeño para NO estar soltero")
 }else {
     alert("bienvenido")
