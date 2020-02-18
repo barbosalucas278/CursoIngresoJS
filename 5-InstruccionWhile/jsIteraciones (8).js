@@ -1,17 +1,17 @@
 function mostrar()
 {	
 	var num=0;
-	var positivo=0;
-	var negativo=1;
-	var respuesta="si";
-	while(!(respuesta==="no")){
-			num += num=parseInt(prompt("Ingrese el número"))
+	var positivo= 0;
+	var negativo= 1;
+	var respuesta="s";
+	while(!(respuesta==="n")){
+			num=parseInt(prompt("Ingrese el número"))
 			if (num<0) {
-				negativo*num;
+				negativo = negativo*num;
 			}else {
-				positivo+num;
+				positivo += num;
 			}
-			respuesta=prompt("¿Desea seguir sumando número?","si o no")
+			respuesta=prompt("¿Desea seguir sumando número?","s o n")
 		}	
 	
 
