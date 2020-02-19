@@ -1,12 +1,16 @@
 function mostrar()
 {
 var sexo = prompt("ingrese f ó m .");
-var femenino = "f";
-var masculino = "m";
+var femenino = "Femenino";
+var masculino = "Masculino";
 while (!(sexo=="f"||sexo=="m")){
-	alert("El dato ingresado es incorrecto, Femenino = f  ||  Masculino = m")
+	alert("El dato ingresado es incorrecto, Femenino = f  ò  Masculino = m")
 	sexo=prompt("Ingrese f ó m")
 }
-document.getElementById('Sexo').value=sexo;
+if (sexo=="f") {
+	document.getElementById('Sexo').value=femenino;
+}else{
+	document.getElementById('Sexo').value=masculino;
+}
 
 }//FIN DE LA FUNCIÓN
