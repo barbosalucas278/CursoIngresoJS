@@ -5,25 +5,45 @@ El jugador seleccionará una imagen correspondiente
 a su opción  y le informaremos si ganó, empató o perdió.
 */
 var eleccionMaquina;
+var jugador;
+function comenzar() {
+    eleccionMaquina = Math.floor(Math.random() * (4 - 1) + 1);
+    console.log(eleccionMaquina)
+}//FIN DE LA FUNCIÓN
 
-function comenzar()
-{
-	
-
+function piedra() {
+    jugador = 1;
+    if (jugador > eleccionMaquina) {
+        alert("Ganaste campeon !")
+    } else if (jugador < eleccionMaquina) {
+        alert("Perdiste :(")
+    } else {
+        alert("Empate!!!")
+    }
+    comenzar();
 
 }//FIN DE LA FUNCIÓN
-function piedra()
-{
-	
 
+function papel() {
+    jugador = 2;
+    if (jugador > eleccionMaquina) {
+        alert("Ganaste campeon !")
+    } else if (jugador < eleccionMaquina) {
+        alert("Perdiste :(")
+    } else {
+        alert("Empate!!!")
+    }
+    comenzar();
 }//FIN DE LA FUNCIÓN
-function papel()
-{
 
-
-}//FIN DE LA FUNCIÓN
-function tijera()
-{
-	
-
+function tijera() {
+    jugador = 3;
+    if (jugador > eleccionMaquina) {
+        alert("Ganaste campeon !")
+    } else if (jugador < eleccionMaquina) {
+        alert("Perdiste :(")
+    } else {
+        alert("Empate!!!")
+    }
+    comenzar();
 }//FIN DE LA FUNCIÓN
