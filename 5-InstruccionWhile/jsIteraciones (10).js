@@ -16,7 +16,7 @@ function mostrar() {
 			if ((negativo % 2) == 0) {
 				contadorPar++
 			}
-		} else if (num > 0 && num != 0) {
+		} else if (num > 0) {
 			positivo += num;
 			contadorPositivo++
 			if ((positivo % 2) == 0) {
