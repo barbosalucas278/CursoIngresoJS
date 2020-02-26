@@ -36,8 +36,8 @@ function mostrar() {
 	document.write(`4. Cantidad de negativos: ${contadorNegativo}</br>`)
 	document.write(`5. Cantidad de ceros: ${contadorCeros}</br>`)
 	document.write(`6. Cantidad de números pares: ${contadorPar}</br>`)
-	document.write(`7. Promedio de positivos: ${(contadorPositivo + contadorNegativo + contadorCeros) / contadorPositivo} </br>`)
-	document.write(`8. Promedio de negativos: ${(contadorPositivo + contadorNegativo + contadorCeros) / contadorNegativo} </br>`)
+	document.write(`7. Promedio de números positivos: ${positivo / contadorPositivo} </br>`)
+	document.write(`8. Promedio de negativos: ${negativo / contadorNegativo} </br>`)
 	document.write(`9. Diferencia entre positivos y negativos: ${positivo + negativo}</br>`)
 
 }//FIN DE LA FUNCIÓN
