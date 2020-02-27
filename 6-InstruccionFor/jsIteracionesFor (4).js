@@ -1,13 +1,10 @@
 function mostrar()
 {
     var i;
-    var botonBreak = document.getElementsByClassName("MiBotonUTNnav").onclick;
-    for(i=0;i==i;i++)
-    {
-        if()
-        
-    }
 
-
+    for(i=1;i>0;i++)
+    { 
+        console.log(i);
+      }
 
 }//FIN DE LA FUNCIÓN
