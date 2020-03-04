@@ -15,6 +15,7 @@ function mostrar() {
     var peso;
     var temp;
     var tempPar = 0;
+    var tempMayor;
     var pesoMax;
     var pesoMin;
     var productosCero = 0;
@@ -22,7 +23,7 @@ function mostrar() {
     var pesoTotal = 0;
     var promedioPeso = 0;
     var flag = 0;
-    var seguir = "s";
+    var seguir = true;
     do {
         marca = prompt("Ingrese la Marca.");
         peso = parseInt(prompt("Ingrese el peso del producto."));
@@ -33,29 +34,26 @@ function mostrar() {
         while (isNaN(temp) || temp < (-30) || temp > 30) {
             temp = parseInt(prompt("Temperatura incorrecta, Ingrese la temperatura del producto."));
         }
-
+        contadorProducto++;
         if (flag == 0) {
             pesoMax = peso;
             marcaMax = marca;
             pesoMin = peso;
             flag = 1;
         }
+
         if (peso < pesoMax || peso > pesoMin) {
-            contadorProducto++;
             pesoTotal = pesoTotal + peso;
-            if (peso >= pesoMax) {
+            if (peso > pesoMax && temp > 0) {
                 pesoMax = peso;
                 marcaMax = marca;
-                contadorProducto++
-                pesoTotal = pesoTotal + peso;
+                tempMayor = temp;
             }
-        } else if (peso > pesoMin || peso < pesoMax) {
+        } else {
             contadorProducto++;
             pesoTotal = pesoTotal + peso;
-            if (peso <= pesoMin) {
+            if (peso < pesoMin) {
                 pesoMin = peso;
-                contadorProducto++
-                pesoTotal = pesoTotal + peso;
             }
         }
         if (temp % 2 == 0) { //temp par
@@ -66,15 +64,12 @@ function mostrar() {
         }
 
 
-        seguir = prompt("¿Desea continuar?");
-    } while (seguir == "s");
+        seguir = confirm("¿Desea continuar?");
+    } while (seguir == true);
     promedioPeso = (pesoTotal / contadorProducto);
     document.write(`La cantidad de temperaturas pares. ${tempPar} </br>`);
-    document.write(`La marca del producto más pesado ${marcaMax}</br>`);
+    document.write(`La marca del producto más pesado y no congelado: ${marcaMax}</br>`);
     document.write(`La cantidad de productos que se conservan a menos de 0 grados. ${productosCero}</br>`);
     document.write(`El promedio del peso de todos los productos. ${promedioPeso}</br>`);
     document.write(`El peso máximo ${pesoMax} y el mínimo. ${pesoMin}</br>`);
-    console.log(pesoTotal)
-    console.log(contadorProducto)
-
 }

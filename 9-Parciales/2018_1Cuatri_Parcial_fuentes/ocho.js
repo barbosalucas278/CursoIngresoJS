@@ -26,24 +26,36 @@ function mostrar() {
     var promedio;
     var letra;      //
     var letraMin;   //
-    var letraMax;   //
+    var letraMax;
+    var letraMinusculaMin;   //
     var num;    //
     var min;    //
-    var max;    //
+    var max;  //
+    var numMinuscula;  //
     var seguir = 's'; //
     var flag = 0; // una flag para poder almacenar por primera vez un max y un min.
+    var flagMinus = 0;
     do {
         letra = prompt("Ingrese una letra.");
+        while (!((letra >= 'A' && letra <= 'Z') || (letra >= 'a' && letra <= 'z'))) { //agregada la validaciòn de una letr minùscula y mayùscula
+            letra = prompt("Letra incorrecta, ingrese nuevamente una letra.");
+        }
+
         num = parseInt(prompt("Ingrese un número."));
         while (isNaN(num) || num > 100 || num < -100) { //validación completada
             num = parseInt(prompt("Número incorrecto, Ingrese un número nuevamente."));
         }
-
+        if ((letra >= 'a' || letra <= 'z') && (flagMinus == 0 || num < numMinuscula)) {
+            numMinuscula = num;
+            letraMinusculaMin = letra;
+            flagMinus = 1;
+        }
 
         if (flag == 0) {
             min = num;
             max = num;
             letraMin = letra;
+            numMinuscula = num;
             letraMax = letra;
             flag = 1;
         }
@@ -71,8 +83,15 @@ function mostrar() {
             } else if (num == 0) {
                 contadorCeros++ //ceros
             }
-            min = num;              //minimo
-            letraMin = letra;
+            min = num;          //minimo
+
+            if (letra <= letraMinusculaMin) { // letra minuscula menor.
+                letraMinusculaMin = letra;
+                letraMin = letra;
+            } else {
+                letraMin = letra;
+            }
+
         }
 
         if (num % 2 == 0) { //numeros par o impar
@@ -80,8 +99,8 @@ function mostrar() {
         } else {
             contadorImpar++
         }
-        seguir = prompt("¿Desea continuar?");
-    } while (seguir == 's');
+        seguir = confirm("¿Desea continuar?");
+    } while (seguir == true);
     promedio = acumuladorPositivo / contadorPositivo;
 
     document.write(`La cantidad de números pares es de: ${contadorPar} </br>`);
@@ -89,6 +108,6 @@ function mostrar() {
     document.write(`La cantidad de ceros es de: ${contadorCeros}</br>`);
     document.write(`El promedio de todos los número positivos ingresados es de: ${promedio}</br>`);
     document.write(`La suma de todos los números negativos es de: ${acumuladorNegativo}</br>`);
-    document.write(`Número máximo:${max}</br> Letra máxima: ${letraMax}</br>Número mínimo:${min} </br>Letramínima: ${letraMin}`);
-
+    document.write(`Número máximo:${max}</br> Letra máxima: ${letraMax}</br>Número mínimo:${min} </br>Letramínima: ${letraMin} </br>`);
+    document.write(`El numero menor de las minusculas ${numMinuscula} la letra de la menor de las minùsculas ${letraMinusculaMin}`)
 }
