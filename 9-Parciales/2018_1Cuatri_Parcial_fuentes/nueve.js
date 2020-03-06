@@ -10,20 +10,20 @@
 //f) El peso máximo y el mínimo.
 
 function mostrar() {
-    var marca;
-    var marcaMax;
-    var peso;
-    var temp;
-    var tempPar = 0;
-    var tempMayor;
-    var pesoMax;
-    var pesoMin;
-    var productosCero = 0;
-    var contadorProducto = 0;
-    var pesoTotal = 0;
+    var marca;  //
+    var marcaMax;   //
+    var peso; //
+    var temp;  //
+    var tempPar = 0; //
+    var pesoMax;    //
+    var pesoMin;    //
+    var productosCero = 0; //
+    var contadorProducto = 0;   //
+    var pesoTotal = 0;  //
     var promedioPeso = 0;
     var flag = 0;
     var seguir = true;
+    var maximoPeso;
     do {
         marca = prompt("Ingrese la Marca.");
         peso = parseInt(prompt("Ingrese el peso del producto."));
@@ -34,42 +34,43 @@ function mostrar() {
         while (isNaN(temp) || temp < (-30) || temp > 30) {
             temp = parseInt(prompt("Temperatura incorrecta, Ingrese la temperatura del producto."));
         }
-        contadorProducto++;
-        if (flag == 0) {
-            pesoMax = peso;
-            marcaMax = marca;
-            pesoMin = peso;
-            flag = 1;
-        }
 
-        if (peso < pesoMax || peso > pesoMin) {
-            pesoTotal = pesoTotal + peso;
-            if (peso > pesoMax && temp > 0) {
-                pesoMax = peso;
-                marcaMax = marca;
-                tempMayor = temp;
-            }
-        } else {
-            contadorProducto++;
-            pesoTotal = pesoTotal + peso;
-            if (peso < pesoMin) {
-                pesoMin = peso;
-            }
-        }
-        if (temp % 2 == 0) { //temp par
+        //------------------------------Paridad de temperaturas--------------------------------
+
+        if (temp % 2 == 0) {
             tempPar++
         }
-        if (temp < 0) { //temp < 0
-            productosCero++
+
+        //---------------------------- Peso min y max------------------------------------------
+        if (contadorProducto == 0 || peso > pesoMax) {
+            pesoMax = peso;
+            marcaMax = marca;
+        }
+        if (contadorProducto == 0 || peso < pesoMin) {
+            pesoMin = peso;
         }
 
+        //----------------------------productos cero grados-----------------------------------
+        if (temp < 0) {
+            productosCero++
+        }
+        //---------------------------marca mas pesada y no congaldo------------------------------
 
+        if((temp>0)&&(flag==0 || peso>maximoPeso)){
+            maximoPeso=peso;
+            marcaMax=marca;
+            flag=1;
+        }
+
+        contadorProducto++
+        pesoTotal = pesoTotal + peso;
         seguir = confirm("¿Desea continuar?");
     } while (seguir == true);
     promedioPeso = (pesoTotal / contadorProducto);
+    document.write(`La marca del producto más pesado no congelado: ${marcaMax} Peso:  ${maximoPeso} </br>`);
     document.write(`La cantidad de temperaturas pares. ${tempPar} </br>`);
-    document.write(`La marca del producto más pesado y no congelado: ${marcaMax}</br>`);
     document.write(`La cantidad de productos que se conservan a menos de 0 grados. ${productosCero}</br>`);
     document.write(`El promedio del peso de todos los productos. ${promedioPeso}</br>`);
     document.write(`El peso máximo ${pesoMax} y el mínimo. ${pesoMin}</br>`);
+
 }
